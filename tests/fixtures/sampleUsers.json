@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "65f1a1b2c3d4e5f6a7b8c9d2",
+    "name": "Sony Direct Merchant",
+    "email": "merchant.sony@example.com",
+    "role": "seller",
+    "isMfaActive": true
+  },
+  {
+    "_id": "65f1a1b2c3d4e5f6a7b8c9d5",
+    "name": "Alex Miller",
+    "email": "alex.miller@example.com",
+    "role": "user",
+    "isMfaActive": false,
+    "address": {
+      "street": "452 Broadway Ave, Apt 4B",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10013",
+      "country": "United States"
+    }
+  },
+  {
+    "_id": "65f1a1b2c3d4e5f6a7b8c9d6",
+    "name": "Platform Superadmin",
+    "email": "admin@apexmart.internal",
+    "role": "admin",
+    "isMfaActive": true
+  }
+]

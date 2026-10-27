@@ -1,0 +1,28 @@
+{
+  "env": {
+    "node": true,
+    "es2022": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "ignorePatterns": ["dist/", "build/", "node_modules/", "frontend/dist/"],
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "no-undef": "error",
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^(next|res|req|_)" }],
+    "no-console": "off"
+  }
+}

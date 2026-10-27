@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Design Tokens (Light Theme) */
+    --color-brand-amber: #ff9900;
+    --color-brand-hover: #f08804;
+    --color-brand-navy: #131921;
+    --color-brand-navylight: #232f3e;
+    --color-brand-slate: #0f1111;
+    --color-brand-darkcard: #ffffff;
+    --color-brand-darkborder: #e5e7eb;
+    --color-brand-darkbg: #f9fafb;
+
+    /* Semantic Surface & Foreground */
+    --color-bg-primary: #f3f4f6;
+    --color-bg-surface: #ffffff;
+    --color-text-primary: #111827;
+    --color-text-secondary: #4b5563;
+    --color-text-muted: #9ca3af;
+    --color-border: #e5e7eb;
+  }
+
+  .dark {
+    /* Brand Design Tokens (Dark Theme) */
+    --color-brand-amber: #ff9900;
+    --color-brand-hover: #f08804;
+    --color-brand-navy: #0b0f14;
+    --color-brand-navylight: #151b24;
+    --color-brand-slate: #0f1111;
+    --color-brand-darkcard: #1a1f29;
+    --color-brand-darkborder: #2e3846;
+    --color-brand-darkbg: #0f1111;
+
+    /* Semantic Surface & Foreground */
+    --color-bg-primary: #0f1111;
+    --color-bg-surface: #1a1f29;
+    --color-text-primary: #f9fafb;
+    --color-text-secondary: #d1d5db;
+    --color-text-muted: #6b7280;
+    --color-border: #2e3846;
+  }
+
+  body {
+    @apply bg-gray-100 text-gray-900 dark:bg-brand-slate dark:text-gray-100 font-sans transition-colors duration-200 antialiased;
+  }
+}
+
+/* Custom scrollbar utilities for Amazon-style horizontal scrollers */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

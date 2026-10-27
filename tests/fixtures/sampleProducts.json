@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "65f1a1b2c3d4e5f6a7b8c9d0",
+    "title": "Sony WH-1000XM5 Wireless Noise Canceling Headphones",
+    "slug": "sony-wh-1000xm5-wireless-noise-canceling-headphones",
+    "description": "Industry-leading noise cancellation with Auto NC Optimizer, crystal clear hands-free calling, and 30-hour battery life.",
+    "price": 399.99,
+    "discountPrice": 248.00,
+    "stock": 8,
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&auto=format&fit=crop&q=80"
+    ],
+    "category": "65f1a1b2c3d4e5f6a7b8c9d1",
+    "seller": "65f1a1b2c3d4e5f6a7b8c9d2",
+    "ratingsAverage": 4.8,
+    "ratingsQuantity": 14820,
+    "isFeatured": true
+  },
+  {
+    "_id": "65f1a1b2c3d4e5f6a7b8c9d3",
+    "title": "Anker Premium 6ft Braided USB-C Fast Charging Cable",
+    "slug": "anker-premium-6ft-braided-usb-c-fast-charging-cable",
+    "description": "Ultra-durable braided nylon cord with 100W Power Delivery support for laptops, tablets, and phones.",
+    "price": 19.99,
+    "discountPrice": 14.99,
+    "stock": 150,
+    "images": [
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&auto=format&fit=crop&q=80"
+    ],
+    "category": "65f1a1b2c3d4e5f6a7b8c9d4",
+    "seller": "65f1a1b2c3d4e5f6a7b8c9d2",
+    "ratingsAverage": 4.9,
+    "ratingsQuantity": 8420,
+    "isFeatured": false
+  }
+]

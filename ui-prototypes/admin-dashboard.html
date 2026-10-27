@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexMart - System Admin Console</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              amber: '#ff9900',
+              hover: '#f08804',
+              navy: '#131921',
+              navylight: '#232f3e',
+              slate: '#0f1111',
+              darkcard: '#1a1f29',
+              darkborder: '#2e3846'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-brand-slate dark:text-gray-100 transition-colors duration-200 antialiased min-h-screen flex flex-col">
+
+  <!-- ================= ADMIN HEADER ================= -->
+  <header class="bg-slate-950 text-white sticky top-0 z-40 border-b border-gray-800 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <a href="home.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-black text-lg font-display shadow-md shadow-indigo-600/30">A</div>
+          <div>
+            <span class="text-lg font-bold tracking-tight text-white font-display">ApexMart <span class="text-indigo-400">Admin</span></span>
+            <span class="block text-[9px] text-gray-400 uppercase tracking-widest font-mono">Tier: SuperAdmin (MFA Verified)</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Quick Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-gray-300">
+        <a href="#" class="text-white border-b-2 border-indigo-400 pb-1">Platform Stats</a>
+        <a href="#users" class="hover:text-indigo-400 transition pb-1">Users & Roles</a>
+        <a href="#audit" class="hover:text-indigo-400 transition pb-1">Security Audit Log</a>
+        <a href="home.html" class="text-brand-amber hover:underline flex items-center gap-1">
+          <i data-lucide="store" class="w-3.5 h-3.5"></i> Live Storefront
+        </a>
+      </nav>
+
+      <!-- Theme & Profile -->
+      <div class="flex items-center gap-3">
+        <button id="themeToggleBtn" title="Toggle Light/Dark Theme" class="p-2 rounded-lg bg-gray-900 text-amber-400 hover:text-white transition">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:inline-block"></i>
+          <i data-lucide="moon" class="w-4 h-4 inline-block dark:hidden"></i>
+        </button>
+
+        <div class="flex items-center gap-2 pl-2 border-l border-gray-800 text-xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="font-bold hidden sm:inline">Admin: root@apexmart.internal</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= ADMIN MAIN CONTENT ================= -->
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+    
+    <!-- Title -->
+    <div>
+      <h1 class="text-2xl font-extrabold font-display text-gray-900 dark:text-white">Platform Governance & Security Oversight</h1>
+      <p class="text-xs text-gray-500 dark:text-gray-400">Monitor high-level marketplace GMV, audit trail mutations, and user role assignments.</p>
+    </div>
+
+    <!-- Platform Stats KPI Cards -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      
+      <!-- KPI 1 -->
+      <div class="bg-white dark:bg-brand-darkcard p-5 rounded-2xl shadow-sm border border-gray-200/80 dark:border-brand-darkborder">
+        <div class="flex items-center justify-between text-gray-400 mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wider">Gross Merchandise Value (GMV)</span>
+          <i data-lucide="bar-chart-3" class="w-4 h-4 text-indigo-500"></i>
+        </div>
+        <p class="text-2xl font-extrabold text-gray-900 dark:text-white font-display">$1,428,950.00</p>
+        <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 mt-1">
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i> +24.1% YoY
+        </span>
+      </div>
+
+      <!-- KPI 2 -->
+      <div class="bg-white dark:bg-brand-darkcard p-5 rounded-2xl shadow-sm border border-gray-200/80 dark:border-brand-darkborder">
+        <div class="flex items-center justify-between text-gray-400 mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wider">Registered Shoppers</span>
+          <i data-lucide="users" class="w-4 h-4 text-blue-500"></i>
+        </div>
+        <p class="text-2xl font-extrabold text-gray-900 dark:text-white font-display">84,120</p>
+        <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 mt-1">
+          <i data-lucide="user-plus" class="w-3.5 h-3.5"></i> 1,280 new this week
+        </span>
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="bg-white dark:bg-brand-darkcard p-5 rounded-2xl shadow-sm border border-gray-200/80 dark:border-brand-darkborder">
+        <div class="flex items-center justify-between text-gray-400 mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wider">Verified Sellers</span>
+          <i data-lucide="store" class="w-4 h-4 text-emerald-500"></i>
+        </div>
+        <p class="text-2xl font-extrabold text-gray-900 dark:text-white font-display">1,248</p>
+        <span class="text-[11px] text-amber-600 dark:text-amber-400 font-semibold flex items-center gap-1 mt-1">
+          <i data-lucide="clock" class="w-3.5 h-3.5"></i> 14 pending KYC review
+        </span>
+      </div>
+
+      <!-- KPI 4 -->
+      <div class="bg-white dark:bg-brand-darkcard p-5 rounded-2xl shadow-sm border border-gray-200/80 dark:border-brand-darkborder">
+        <div class="flex items-center justify-between text-gray-400 mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wider">Platform Health</span>
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
+        </div>
+        <p class="text-2xl font-extrabold text-gray-900 dark:text-white font-display">99.98% Uptime</p>
+        <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 mt-1">
+          <i data-lucide="check" class="w-3.5 h-3.5"></i> All API Clusters Healthy
+        </span>
+      </div>
+
+    </section>
+
+    <!-- ================= USERS & RBAC TABLE ================= -->
+    <section id="users" class="bg-white dark:bg-brand-darkcard p-6 rounded-2xl shadow-sm border border-gray-200/80 dark:border-brand-darkborder space-y-4">
+      
+      <div class="flex items-center justify-between border-b border-gray-100 dark:border-brand-darkborder pb-4">
+        <div>
+          <h2 class="text-lg font-bold font-display text-gray-900 dark:text-white">User Accounts & Role Governance (Module 01)</h2>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Enforce Role-Based Access Control and multi-factor authentication requirements.</p>
+        </div>
+        <button class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-lg transition shadow">
+          Export User Roster
+        </button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="text-gray-500 dark:text-gray-400 uppercase tracking-wider border-b border-gray-200 dark:border-brand-darkborder">
+            <tr>
+              <th class="py-3 px-3">User</th>
+              <th class="py-3 px-3">Email</th>
+              <th class="py-3 px-3">Role Tier</th>
+              <th class="py-3 px-3">MFA Status</th>
+              <th class="py-3 px-3">Created Date</th>
+              <th class="py-3 px-3 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-brand-darkborder font-medium">
+            
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 flex items-center gap-2">
+                <div class="w-7 h-7 rounded-full bg-slate-900 text-amber-400 font-bold flex items-center justify-center">A</div>
+                <span class="font-bold text-gray-900 dark:text-white">Alex Miller</span>
+              </td>
+              <td class="py-3 px-3 text-gray-600 dark:text-gray-400">alex.miller@example.com</td>
+              <td class="py-3 px-3">
+                <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-bold text-[10px]">
+                  BUYER (USER)
+                </span>
+              </td>
+              <td class="py-3 px-3">
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                  <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Enabled
+                </span>
+              </td>
+              <td class="py-3 px-3 text-gray-500">Jan 12, 2026</td>
+              <td class="py-3 px-3 text-right">
+                <button class="text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-bold">Promote to Seller</button>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 flex items-center gap-2">
+                <div class="w-7 h-7 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center">S</div>
+                <span class="font-bold text-gray-900 dark:text-white">Sony Direct US</span>
+              </td>
+              <td class="py-3 px-3 text-gray-600 dark:text-gray-400">merchant.sony@example.com</td>
+              <td class="py-3 px-3">
+                <span class="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 font-bold text-[10px]">
+                  MERCHANT (SELLER)
+                </span>
+              </td>
+              <td class="py-3 px-3">
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                  <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Enabled
+                </span>
+              </td>
+              <td class="py-3 px-3 text-gray-500">Feb 04, 2026</td>
+              <td class="py-3 px-3 text-right">
+                <button class="text-xs text-amber-600 hover:underline font-bold">Manage Store</button>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 flex items-center gap-2">
+                <div class="w-7 h-7 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center">R</div>
+                <span class="font-bold text-gray-900 dark:text-white">Root Superadmin</span>
+              </td>
+              <td class="py-3 px-3 text-gray-600 dark:text-gray-400">root@apexmart.internal</td>
+              <td class="py-3 px-3">
+                <span class="px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-bold text-[10px]">
+                  SUPER ADMIN
+                </span>
+              </td>
+              <td class="py-3 px-3">
+                <span class="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> FIDO2 / 2FA
+                </span>
+              </td>
+              <td class="py-3 px-3 text-gray-500">System Genesis</td>
+              <td class="py-3 px-3 text-right text-gray-400">System Lock</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- ================= AUDIT LOGS TABLE (MODULE 06 COMPLIANCE) ================= -->
+    <section id="audit" class="bg-white dark:bg-brand-darkcard p-6 rounded-2xl shadow-sm border border-gray-200/80 dark:border-brand-darkborder space-y-4">
+      
+      <div class="flex items-center justify-between border-b border-gray-100 dark:border-brand-darkborder pb-4">
+        <div>
+          <h2 class="text-lg font-bold font-display text-gray-900 dark:text-white">Security & Transaction Audit Trail (Module 06)</h2>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Immutable ledger capturing state mutations, role changes, and financial triggers.</p>
+        </div>
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
+          <i data-lucide="shield" class="w-3.5 h-3.5"></i> Append-Only Mode
+        </span>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs font-mono">
+          <thead class="text-gray-500 dark:text-gray-400 uppercase tracking-wider border-b border-gray-200 dark:border-brand-darkborder text-[11px]">
+            <tr>
+              <th class="py-3 px-3 font-sans">Timestamp (UTC)</th>
+              <th class="py-3 px-3 font-sans">Actor ID</th>
+              <th class="py-3 px-3 font-sans">Action Tag</th>
+              <th class="py-3 px-3 font-sans">Target Entity</th>
+              <th class="py-3 px-3 font-sans">IP Address</th>
+              <th class="py-3 px-3 font-sans text-right">Result</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-brand-darkborder text-xs">
+            
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+              <td class="py-2.5 px-3 text-gray-500">2026-10-03 10:48:12</td>
+              <td class="py-2.5 px-3 font-bold text-gray-800 dark:text-gray-200">usr_98a72f</td>
+              <td class="py-2.5 px-3 text-brand-amber font-bold">ORDER_PLACED_ACID</td>
+              <td class="py-2.5 px-3 text-gray-600 dark:text-gray-400">order_apx982347 ($449.63)</td>
+              <td class="py-2.5 px-3 text-gray-500">198.51.100.42</td>
+              <td class="py-2.5 px-3 text-right text-emerald-500 font-bold">SUCCESS</td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+              <td class="py-2.5 px-3 text-gray-500">2026-10-03 10:48:10</td>
+              <td class="py-2.5 px-3 font-bold text-gray-800 dark:text-gray-200">usr_98a72f</td>
+              <td class="py-2.5 px-3 text-indigo-400 font-bold">STRIPE_PAYMENT_AUTHORIZED</td>
+              <td class="py-2.5 px-3 text-gray-600 dark:text-gray-400">pi_3MtwL24x9Z</td>
+              <td class="py-2.5 px-3 text-gray-500">198.51.100.42</td>
+              <td class="py-2.5 px-3 text-right text-emerald-500 font-bold">SUCCESS</td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+              <td class="py-2.5 px-3 text-gray-500">2026-10-03 10:15:02</td>
+              <td class="py-2.5 px-3 font-bold text-gray-800 dark:text-gray-200">slr_sony44</td>
+              <td class="py-2.5 px-3 text-emerald-500 font-bold">PRODUCT_STOCK_UPDATED</td>
+              <td class="py-2.5 px-3 text-gray-600 dark:text-gray-400">prod_wh1000xm5 (qty: 8)</td>
+              <td class="py-2.5 px-3 text-gray-500">203.0.113.19</td>
+              <td class="py-2.5 px-3 text-right text-emerald-500 font-bold">SUCCESS</td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+              <td class="py-2.5 px-3 text-gray-500">2026-10-03 09:42:33</td>
+              <td class="py-2.5 px-3 font-bold text-gray-800 dark:text-gray-200">anonymous_ip</td>
+              <td class="py-2.5 px-3 text-rose-500 font-bold">AUTH_RATE_LIMIT_TRIGGER</td>
+              <td class="py-2.5 px-3 text-gray-600 dark:text-gray-400">POST /api/v1/auth/login</td>
+              <td class="py-2.5 px-3 text-gray-500">192.0.2.14</td>
+              <td class="py-2.5 px-3 text-right text-rose-500 font-bold">BLOCKED (429)</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-950 text-gray-500 text-xs py-6 border-t border-gray-800 text-center mt-12">
+    <p>&copy; 2026 ApexMart Enterprise Platform Administration Console.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('apexmart_theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('apexmart_theme', 'light');
+      }
+      lucide.createIcons();
+    }
+    const savedTheme = localStorage.getItem('apexmart_theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme ? savedTheme === 'dark' : systemPrefersDark);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isCurrentlyDark = document.documentElement.classList.contains('dark');
+      applyTheme(!isCurrentlyDark);
+    });
+  </script>
+</body>
+</html>

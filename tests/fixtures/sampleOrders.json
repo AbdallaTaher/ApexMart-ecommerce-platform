@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "65f1a1b2c3d4e5f6a7b8c9d7",
+    "user": "65f1a1b2c3d4e5f6a7b8c9d5",
+    "orderCode": "APX-982347-NYC",
+    "items": [
+      {
+        "product": "65f1a1b2c3d4e5f6a7b8c9d0",
+        "title": "Sony WH-1000XM5 Wireless Noise Canceling Headphones",
+        "quantity": 1,
+        "price": 248.00
+      },
+      {
+        "product": "65f1a1b2c3d4e5f6a7b8c9d3",
+        "title": "Anker Premium 6ft Braided USB-C Fast Charging Cable",
+        "quantity": 1,
+        "price": 14.99
+      }
+    ],
+    "totalPrice": 262.99,
+    "paymentStatus": "paid",
+    "orderStatus": "processing",
+    "idempotencyKey": "idem_test_99213812",
+    "carrierTrackingNumber": "APX-TRK-771920-US"
+  }
+]
