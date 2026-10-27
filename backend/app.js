@@ -22,6 +22,9 @@ const orderController = require('./controllers/orderController');
 
 const app = express();
 
+// Trust reverse proxy (Render, Heroku, Cloudflare) for HTTPS detection and secure cookies
+app.set('trust proxy', 1);
+
 // 1) GLOBAL MIDDLEWARES
 
 // Latency budget & high-resolution performance monitoring (<300ms budget)
@@ -66,8 +69,13 @@ app.use(
         }
       }
 
-      // In production mode, strictly enforce allowedOrigins whitelist
-      if (allowedOrigins.indexOf(origin) !== -1) {
+      // In production mode, check allowedOrigins whitelist, CLIENT_URL, and *.vercel.app domains
+      const isAllowedOrigin =
+        allowedOrigins.includes(origin) ||
+        (process.env.CLIENT_URL && origin === process.env.CLIENT_URL) ||
+        /\.vercel\.app$/.test(origin);
+
+      if (isAllowedOrigin) {
         callback(null, true);
       } else {
         callback(new AppError('CORS policy: Not allowed by Access-Control-Allow-Origin', 403));

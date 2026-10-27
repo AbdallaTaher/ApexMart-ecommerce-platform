@@ -26,11 +26,11 @@ const createSendToken = (user, statusCode, req, res) => {
   const cookieOptions = {
     expires: new Date(Date.now() + cookieExpiresInDays * 24 * 60 * 60 * 1000),
     httpOnly: true, // Prevents XSS client script access
-    sameSite: 'lax', // Protects against cross-site request forgery
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' required for cross-domain Vercel <-> Render cookies
     secure:
+      process.env.NODE_ENV === 'production' ||
       req.secure ||
-      req.headers['x-forwarded-proto'] === 'https' ||
-      process.env.NODE_ENV === 'production',
+      req.headers['x-forwarded-proto'] === 'https',
   };
 
   res.cookie('jwt', token, cookieOptions);
@@ -120,11 +120,11 @@ exports.logout = catchAsync(async (req, res, next) => {
     expires: new Date(0),
     maxAge: 0,
     httpOnly: true,
-    sameSite: 'lax',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     secure:
+      process.env.NODE_ENV === 'production' ||
       req.secure ||
-      req.headers['x-forwarded-proto'] === 'https' ||
-      process.env.NODE_ENV === 'production',
+      req.headers['x-forwarded-proto'] === 'https',
   });
 
   // Explicitly prevent browser/proxy 304 caching of logout endpoint
