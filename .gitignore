@@ -44,3 +44,19 @@ Thumbs.db
 .stylelintcache
 .cache/
 .vite/
+
+# Internal AI Governance, Rules & Workflow Files (Exclude from Public GitHub)
+AI-Rules/
+AGENTS.md
+CLAUDE.md
+chatgpt.md
+.github/
+00-project-idea.md
+TASKS LIST.md
+docs/
+
+# Prototypes & Scratch Files
+ui-prototypes/
+test_fake.jpg
+test_real.jpg
+
