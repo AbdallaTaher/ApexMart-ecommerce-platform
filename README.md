@@ -35,7 +35,7 @@ Visitors, recruiters, and reviewers can explore all role-based portals using the
 
 ## ✨ Key Feature Highlights
 
-### 🛒 1. Amazon-Style Storefront & Catalog Discovery
+### 🛒 1. Styled Storefront & Catalog Discovery
 - **Multi-Facet Filtering:** Filter in real-time by department/category, minimum customer star rating, and dynamic price sliders.
 - **Effective Price Sorting:** Database-indexed sorting based on the buyer's actual checkout price (`effectivePrice` calculating direct discounts vs deal percentages).
 - **Search with Debounce:** Instant search across product titles, descriptions, and brand names with URL query synchronization.
