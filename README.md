@@ -1,4 +1,4 @@
-# ApexMart — Enterprise Amazon-Grade Full-Stack E-Commerce Platform
+# ApexMart — Enterprise Full-Stack E-Commerce Platform
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel%20%26%20Render-success?style=for-the-badge&logo=vercel)](https://frontend-woad-two-scu7pccs5d.vercel.app/)
 [![Tests](https://img.shields.io/badge/Vitest-290%20Passed%20(100%25)-brightgreen?style=for-the-badge&logo=vitest)](https://github.com/AbdallaTaher/ApexMart-ecommerce-platform)
