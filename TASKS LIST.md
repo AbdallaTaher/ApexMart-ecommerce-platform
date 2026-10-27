@@ -83,3 +83,18 @@
 - [x] **Task 34 (Testing):** Playwright E2E Automated Browser Journeys (complete buyer & seller workflows)
 - [x] **Task 35 (Security & Risk Register):** Full OWASP Security Audit (NoSQLi, XSS DOMPurify, Risk Register documentation)
 - [x] **Task 36 (Production Readiness & Audit Gate):** Production Bundle Build, Asset Compression, Full-Spectrum Lighthouse 90+ Audit Gate (Performance, a11y, Best Practices, SEO), and Final Smoke Test
+
+---
+
+## 🌐 PHASE E: VERSION CONTROL & GITHUB INTEGRATION
+- [x] **Git Repository Setup:** Monorepo initialized on `main` branch with strict `.gitignore`
+- [x] **Semantic Versioning:** Release tagged with `v1.0.0`
+- [x] **GitHub Remote Push:** Successfully published to https://github.com/AbdallaTaher/ApexMart-ecommerce-platform.git
+
+---
+
+## ☁️ PHASE F: PRODUCTION & DEPLOYMENT
+- [x] **Backend API Deployment:** Live on Render Web Service (persistent Node.js + MongoDB Atlas)
+- [x] **Frontend SPA Deployment:** Live on Vercel Edge Network at https://frontend-woad-two-scu7pccs5d.vercel.app
+- [x] **Cross-Origin Security & Cookie Linking:** Configured reverse-proxy trust (`trust proxy`), `sameSite: none`, `secure: true`, and `CLIENT_URL` CORS authorization
+
