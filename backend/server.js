@@ -13,12 +13,19 @@ dotenv.config({ path: path.join(__dirname, 'config.env') });
 
 const mongoose = require('mongoose');
 const app = require('./app');
+const startKeepAlive = require('./utils/keepAlive');
 
 // 3) CONNECT TO MONGODB DATABASE
 const DB = process.env.DATABASE || 'mongodb://127.0.0.1:27017/apexmart';
 
+const mongooseOptions = {
+  maxPoolSize: 10,
+  serverSelectionTimeoutMS: 8000,
+  socketTimeoutMS: 45000,
+};
+
 mongoose
-  .connect(DB)
+  .connect(DB, mongooseOptions)
   .then((con) => {
     console.log(
       `✅ MongoDB Connected Successfully: Host [${con.connection.host}], DB [${con.connection.name}]`
@@ -38,6 +45,9 @@ const server = app.listen(port, () => {
     `🚀 ApexMart API Server running on port ${port} in ${process.env.NODE_ENV || 'development'} mode...`
   );
   console.log(`📡 Health Check: http://localhost:${port}/api/v1/health`);
+
+  // Start keep-alive ping for free cloud platforms (Render) to prevent idle sleep
+  startKeepAlive();
 });
 
 // 5) HANDLE UNHANDLED ASYNCHRONOUS PROMISE REJECTIONS

@@ -34,6 +34,7 @@ const createSendToken = (user, statusCode, req, res) => {
   };
 
   res.cookie('jwt', token, cookieOptions);
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
 
   // Remove password from sensitive JSON response
   user.password = undefined;

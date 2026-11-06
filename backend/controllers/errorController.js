@@ -103,6 +103,9 @@ module.exports = (err, req, res, next) => {
     if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
     if (error.name === 'JsonWebTokenError') error = handleJWTError();
     if (error.name === 'TokenExpiredError') error = handleJWTExpiredError();
+    if (error.type === 'entity.too.large' || error.statusCode === 413) {
+      error = new AppError('Payload too large. Request body cannot exceed 10KB.', 413);
+    }
 
     sendErrorProd(error, req, res);
   }

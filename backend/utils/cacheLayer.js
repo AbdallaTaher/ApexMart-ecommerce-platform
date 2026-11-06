@@ -152,6 +152,13 @@ class CacheLayer {
       // Only cache safe GET requests
       if (req.method !== 'GET') return next();
 
+      // Set standard HTTP cache headers for client and CDN edge caching (mitigates cold starts)
+      const maxAgeSec = Math.min(Math.floor((ttlMs || this.defaultTTL) / 1000), 120);
+      res.setHeader(
+        'Cache-Control',
+        `public, max-age=${maxAgeSec}, s-maxage=${Math.min(maxAgeSec * 2, 300)}, stale-while-revalidate=600`
+      );
+
       const key = this.generateKey(req);
       const cachedData = this.get(key);
 

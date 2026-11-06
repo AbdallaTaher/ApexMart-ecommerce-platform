@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { HiMagnifyingGlass, HiArrowPath } from 'react-icons/hi2';
 import ProductCard from './ProductCard';
 import ProductSkeleton from './ProductSkeleton';
@@ -17,12 +18,32 @@ export default function ProductGrid({
   isFetching = false,
   onClearFilters,
 }) {
+  const [showSlowNotice, setShowSlowNotice] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (isLoading) {
+      timer = setTimeout(() => setShowSlowNotice(true), 2500);
+    } else {
+      setShowSlowNotice(false);
+    }
+    return () => clearTimeout(timer);
+  }, [isLoading]);
+
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        {[...Array(8)].map((_, i) => (
-          <ProductSkeleton key={i} />
-        ))}
+      <div className="space-y-4">
+        {showSlowNotice && (
+          <div className="py-2.5 px-4 rounded-lg bg-amber-500/10 border border-brand-amber/30 text-amber-800 dark:text-amber-300 text-xs flex items-center justify-center gap-2 animate-pulse">
+            <span className="w-2 h-2 rounded-full bg-brand-amber animate-ping" />
+            <span>Connecting to live cloud server... Initial spin-up may take ~20-30s on first load.</span>
+          </div>
+        )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {[...Array(8)].map((_, i) => (
+            <ProductSkeleton key={i} />
+          ))}
+        </div>
       </div>
     );
   }

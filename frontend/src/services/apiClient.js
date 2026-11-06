@@ -18,4 +18,11 @@ const apiClient = axios.create({
   },
 });
 
+// Proactively warm up backend cloud container on initial load (mitigates cold starts)
+if (typeof window !== 'undefined') {
+  setTimeout(() => {
+    apiClient.get('/health').catch(() => {});
+  }, 50);
+}
+
 export default apiClient;
