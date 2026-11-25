@@ -1,6 +1,7 @@
 # ApexMart — Enterprise Full-Stack E-Commerce Platform
 > 🚀 **Looking for the Commercial Production Edition?**
 > Get **ApexMart Pro** with **7 pre-integrated payment gateways** (Stripe, PayPal, Paymob, Tap, Moyasar, CMI, COD), 1-Click Demo Mode, 20-product seeder, and complete deployment documentation:
+> 👉 **[Buy on Codester (Regular & Extended License)](https://www.codester.com/items/76508/apexmart-full-stack-mern-e-commerce-platform?ref=AbdallaTaher)**
 > 👉 **[Get ApexMart Pro on Gumroad](https://abdallataher.gumroad.com/l/apexmart-mern-ecommerce)**
 
 ---
